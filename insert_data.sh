@@ -8,6 +8,8 @@ else
 fi
 
 # Do not change code above this line. Use the PSQL variable above to query your database.
+# Empty tables and reset index
+echo $($PSQL "TRUNCATE TABLE teams, games RESTART IDENTITY CASCADE;")
 cat games.csv | while IFS="," read YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
 do
   if [[ $WINNER != winner ]]
